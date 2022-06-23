@@ -16,7 +16,7 @@
 
     return {
       props: {
-        projects,
+        projects: projects.reverse(),
       },
     }
   }
