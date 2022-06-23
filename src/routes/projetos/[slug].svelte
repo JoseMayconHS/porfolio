@@ -1,0 +1,77 @@
+<script context="module">
+  import { page } from '$app/stores'
+  import Head from '$components/head.svelte'
+  import { client } from '$lib/graphql-client'
+  import { projectQuery } from '$lib/graphql-queries'
+  import {
+    fetchSiteMetadata,
+    siteMetadataStore,
+  } from '$stores/site-metadata'
+  import { marked } from 'marked'
+
+  export const load = async ({ params }) => {
+    await fetchSiteMetadata()
+
+    const { slug } = params
+    const variables = { slug }
+    const { project } = await client.request(projectQuery, variables)
+
+    return {
+      props: {
+        project,
+      },
+    }
+  }
+</script>
+
+<script>
+  export let project
+
+  const {
+    siteUrl,
+    name: siteName,
+    openGraphDefaultImage,
+  } = $siteMetadataStore || []
+</script>
+
+<Head
+  title={`${project.name} · ${siteName}`}
+  description={project.description.slice(0, 120)}
+  image={openGraphDefaultImage.url}
+  url={`${siteUrl}${$page.url.pathname}`}
+  icon={ project.image[1].url }
+/>
+
+<div class="sm:-mx-5 md:-mx-10 lg:-mx-20 xl:-mx-38 mb-5">
+  <img
+    class="rounded-lg"
+    src={project.image[0].url}
+    alt={project.title}
+  />
+</div>
+
+<h1 class="text-4xl font-semibold mb-5">{project.name}</h1>
+
+<div class="mb-5 flex justify-between">
+  <div>
+    {#if project.tags}
+      {#each project.tags as tag}
+        <span
+          class="badge badge-secondary mr-2 hover:bg-neutral-focus hover:text-white cursor-pointer"
+          >{tag}</span
+        >
+      {/each}
+    {/if}
+  </div>
+</div>
+
+<div
+  class="mb-5 prose flex prose-a:text-primary hover:prose-a:text-primary-focus"
+>
+  <a class="mr-5" href={project.demo}>Demostração</a>
+  <a href={project.sourceCode}>Repositório</a>
+</div>
+
+<article class="prose prose-xl">
+  {@html marked(project.description)}
+</article>
