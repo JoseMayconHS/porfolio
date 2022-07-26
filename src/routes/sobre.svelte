@@ -1,11 +1,12 @@
 <script context="module">
   import { page } from '$app/stores'
+  import About from '$components/about.svelte'
   import Head from '$components/head.svelte'
   import { client } from '$lib/graphql-client'
   import { authorsQuery } from '$lib/graphql-queries'
   import {
-    fetchSiteMetadata,
-    siteMetadataStore,
+  fetchSiteMetadata,
+  siteMetadataStore
   } from '$stores/site-metadata'
   import { marked } from 'marked'
 
@@ -48,14 +49,7 @@
 
 <h1 class="font-bold text-center mb-20 text-5xl">Sobre mim</h1>
 
-<div class="flex mb-40 items-end">
-  <div class="mr-6">
-    <h2 class="text-3xl mb-4 font-bold tracking-wider">{name}</h2>
-    <p class="text-xl mb-4">{intro}</p>
-  </div>
-
-  <img class="mask mask-squircle h-48" src={url} alt={name} />
-</div>
+<About name={ name } intro={ intro } url={ url } />
 
 <article div class="prose prose-lg">
   {@html marked(bio)}

@@ -1,13 +1,14 @@
 <script context="module">
+  import About from '$components/about.svelte'
   import Head from '$components/head.svelte'
   import ProjectCard from '$components/project-card.svelte'
   import { client } from '$lib/graphql-client'
-  import { authorsQuery, projectsQuery } from '$lib/graphql-queries'
+  import { authorsQuery,projectsQuery } from '$lib/graphql-queries'
   import {
-    authorsStore,
-    fetchAuthors,
-    fetchSiteMetadata,
-    siteMetadataStore,
+  authorsStore,
+  fetchAuthors,
+  fetchSiteMetadata,
+  siteMetadataStore
   } from '$stores/site-metadata'
 
   export const load = async () => {
@@ -55,14 +56,7 @@
 </h1>
 
 {#each authors as { name, intro, picture: { url } }}
-  <div class="flex mb-40 items-end">
-    <div class="mr-6">
-      <h2 class="text-3xl mb-4 font-bold tracking-wider">{name}</h2>
-      <p class="text-xl mb-4">{intro}</p>
-    </div>
-
-    <img class="mask mask-squircle h-48" src={url} alt={name} />
-  </div>
+  <About name={ name } intro={ intro } url={ url } />
 {/each}
 
 <div
