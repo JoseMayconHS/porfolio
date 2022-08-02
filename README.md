@@ -7,6 +7,7 @@ só fiz alguns ajustes e adaptações, nada com o conhecimento em Svelte!
 
 ## Tecnologias
  - Javascript;
+ - Tailwind css;
  - Svelte;
  - Graphql.
 
