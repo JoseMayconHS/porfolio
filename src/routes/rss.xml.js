@@ -49,7 +49,7 @@ const xml = (
             <div style="margin-top: 50px; font-style: italic;">
               <strong>
                 <a href="${siteUrl}/posts/${post.slug}">
-                  Keep reading
+                  Continue lendo
                 </a>
               </strong>
             </div>

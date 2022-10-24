@@ -39,7 +39,7 @@
   description={project.description.slice(0, 120)}
   image={openGraphDefaultImage.url}
   url={`${siteUrl}${$page.url.pathname}`}
-  icon={ project.image[1].url }
+  icon={project.image[1].url}
 />
 
 <div class="sm:-mx-5 md:-mx-10 lg:-mx-20 xl:-mx-38 mb-5">
@@ -68,8 +68,8 @@
 <div
   class="mb-5 prose flex prose-a:text-primary hover:prose-a:text-primary-focus"
 >
-  <a class="mr-5" href={project.demo}>Demostração</a>
-  <a href={project.sourceCode}>Repositório</a>
+  <a class="mr-5" href={project.demo} target="_blank">Demostração</a>
+  <a href={project.sourceCode} target="_blank">Repositório</a>
 </div>
 
 <article class="prose prose-xl">
