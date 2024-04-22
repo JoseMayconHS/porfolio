@@ -66,10 +66,14 @@
 </div>
 
 <div
-  class="mb-5 prose flex prose-a:text-primary hover:prose-a:text-primary-focus"
+  class="mb-5 pt-5 prose flex prose-a:text-primary hover:prose-a:text-primary-focus"
 >
-  <a class="mr-5" href={project.demo} target="_blank">Demostração</a>
-  <a href={project.sourceCode} target="_blank">Repositório</a>
+  {#if project.demo}
+    <a href={project.demo} target="_blank">Demostração</a>
+  {/if}
+  {#if project.sourceCode}
+    <a href={project.sourceCode} target="_blank">Repositório</a>
+  {/if}
 </div>
 
 <article class="prose prose-xl">
