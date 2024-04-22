@@ -57,7 +57,7 @@
     {#if project.tags}
       {#each project.tags as tag}
         <span
-          class="badge badge-secondary mr-2 hover:bg-neutral-focus hover:text-white cursor-pointer"
+          class="badge badge-secondary mr-2 hover:bg-neutral-focus hover:text-white cursor-default"
           >{tag}</span
         >
       {/each}
